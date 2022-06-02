@@ -1,19 +1,22 @@
-﻿using ClearBank.DeveloperTest.Data.Factories;
+﻿using ClearBank.DeveloperTest.Data.Interfaces;
 using ClearBank.DeveloperTest.Types;
 using ClearBank.DeveloperTest.Validators;
-using System.Configuration;
 
 namespace ClearBank.DeveloperTest.Services
 {
     public class PaymentService : IPaymentService
     {
+        private readonly IDataStore _dataStore;
+
+        public PaymentService(IDataStore dataStore)
+        {
+            _dataStore = dataStore;
+        }
+
         public MakePaymentResult MakePayment(MakePaymentRequest request)
         {
-            var dataStoreType = ConfigurationManager.AppSettings["DataStoreType"];
-            var accountDataStore = DataStoreFactory.CreateDataStore(dataStoreType);
-            
             Account account;
-            account = accountDataStore.GetAccount(request.DebtorAccountNumber);
+            account = _dataStore.GetAccount(request.DebtorAccountNumber);
 
             var makePaymentResult = new MakePaymentResult
             {
@@ -23,7 +26,7 @@ namespace ClearBank.DeveloperTest.Services
             if (!makePaymentResult.Success) return makePaymentResult;
 
             account.Balance -= request.Amount;
-            accountDataStore.UpdateAccount(account);
+            _dataStore.UpdateAccount(account);
 
             return makePaymentResult;
         }
