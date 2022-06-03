@@ -2,7 +2,6 @@
 using ClearBank.DeveloperTest.Services;
 using ClearBank.DeveloperTest.Tests.Helpers;
 using ClearBank.DeveloperTest.Types;
-using ClearBank.DeveloperTest.Validators;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
