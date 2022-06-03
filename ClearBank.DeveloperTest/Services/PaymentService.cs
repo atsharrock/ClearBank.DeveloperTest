@@ -1,6 +1,7 @@
 ﻿using ClearBank.DeveloperTest.Data.Interfaces;
 using ClearBank.DeveloperTest.Types;
 using ClearBank.DeveloperTest.Validators;
+using FluentValidation.Results;
 
 namespace ClearBank.DeveloperTest.Services
 {
@@ -15,12 +16,12 @@ namespace ClearBank.DeveloperTest.Services
 
         public MakePaymentResult MakePayment(MakePaymentRequest request)
         {
-            Account account;
-            account = _dataStore.GetAccount(request.DebtorAccountNumber);
+            var account = _dataStore.GetAccount(request.DebtorAccountNumber);
+            var accountValidation = ValidateAccount(request, account);
 
             var makePaymentResult = new MakePaymentResult
             {
-                Success = ValidateAccount(request, account)
+                Success = accountValidation.IsValid
             };
 
             if (!makePaymentResult.Success) return makePaymentResult;
@@ -31,11 +32,10 @@ namespace ClearBank.DeveloperTest.Services
             return makePaymentResult;
         }
 
-        private static bool ValidateAccount(MakePaymentRequest paymentRequest, Account account)
+        private static ValidationResult ValidateAccount(MakePaymentRequest paymentRequest, Account account)
         {
             var accountValidator = new AccountValidator(paymentRequest);
-            var accountValidatorResult = accountValidator.Validate(account);
-            return accountValidatorResult.IsValid;
+            return accountValidator.Validate(account);
         }
     }
 }

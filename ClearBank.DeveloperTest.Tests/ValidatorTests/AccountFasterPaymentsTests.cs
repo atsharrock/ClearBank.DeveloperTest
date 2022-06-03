@@ -1,4 +1,4 @@
-﻿using ClearBank.DeveloperTest.Tests.ValidatorTests.Helpers;
+﻿using ClearBank.DeveloperTest.Tests.Helpers;
 using ClearBank.DeveloperTest.Types;
 using ClearBank.DeveloperTest.Validators;
 using FluentAssertions;

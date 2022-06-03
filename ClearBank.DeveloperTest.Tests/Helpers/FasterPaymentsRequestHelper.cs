@@ -1,7 +1,7 @@
-﻿using System;
-using ClearBank.DeveloperTest.Types;
+﻿using ClearBank.DeveloperTest.Types;
+using System;
 
-namespace ClearBank.DeveloperTest.Tests.ValidatorTests.Helpers
+namespace ClearBank.DeveloperTest.Tests.Helpers
 {
     public static class FasterPaymentsRequestHelper
     {

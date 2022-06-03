@@ -1,6 +1,6 @@
 ﻿using ClearBank.DeveloperTest.Types;
 
-namespace ClearBank.DeveloperTest.Tests.ValidatorTests.Helpers
+namespace ClearBank.DeveloperTest.Tests.Helpers
 {
     public static class BacsPaymentRequestHelper
     {
@@ -12,11 +12,11 @@ namespace ClearBank.DeveloperTest.Tests.ValidatorTests.Helpers
             };
         }
 
-        public static MakePaymentRequest CreateInValidBacsPaymentRequest(PaymentScheme paymentScheme)
+        public static MakePaymentRequest CreateInValidBacsPaymentRequest()
         {
             return new MakePaymentRequest()
             {
-                PaymentScheme = paymentScheme,
+                PaymentScheme = PaymentScheme.FasterPayments,
             };
         }
     }

@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using ClearBank.DeveloperTest.Tests.ValidatorTests.Helpers;
+using ClearBank.DeveloperTest.Tests.Helpers;
 using ClearBank.DeveloperTest.Types;
 using ClearBank.DeveloperTest.Validators;
 using FluentAssertions;
@@ -38,7 +38,7 @@ namespace ClearBank.DeveloperTest.Tests.ValidatorTests
         public void BacsPayment_PaymentSchemeNotAllowed_IsNotValid()
         {
             var account = AccountHelper.CreateBacsAccount();
-            var invalidPaymentRequest = BacsPaymentRequestHelper.CreateInValidBacsPaymentRequest(PaymentScheme.FasterPayments);
+            var invalidPaymentRequest = BacsPaymentRequestHelper.CreateInValidBacsPaymentRequest();
 
             var accountValidator = new AccountValidator(invalidPaymentRequest);
             var result = accountValidator.Validate(account);

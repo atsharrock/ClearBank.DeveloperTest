@@ -1,6 +1,6 @@
 ﻿using ClearBank.DeveloperTest.Types;
 
-namespace ClearBank.DeveloperTest.Tests.ValidatorTests.Helpers
+namespace ClearBank.DeveloperTest.Tests.Helpers
 {
     public static class ChapsPaymentRequestHelper
     {
